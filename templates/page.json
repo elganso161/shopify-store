@@ -3,7 +3,26 @@
     "main": {
       "type": "main-page",
       "settings": { "padding_top": 28, "padding_bottom": 28 }
+    },
+    "sectionsTest": {
+      "type": "video"
+    },
+    "test": {
+      "type": "test"
+    },
+    "section-title": {
+      "type": "section-title"
+    },
+    "section-service":{
+        "type":"section-service"
+    },
+    "section-team":{
+        "type":"section-team"
+    },
+    "section-news":{
+        "type":"section-news"
     }
+
   },
-  "order": ["main"]
+  "order": ["main", "sectionsTest", "test", "section-title","section-service","section-team","section-news"]
 }

@@ -1,0 +1,150 @@
+{{ 'section-news.scss.css' | asset_url | stylesheet_tag }}
+
+<div class="container">
+    <div class="news">
+        <h2 class="news__title">{{ section.settings.service_title }}</h2>
+        <div>
+            <ul class="news__list">
+                {% for block in section.blocks limit: 3 %}
+                    <li class="news__list-item">
+                        <img class="news__img" src="{{ block.settings.news_image | img_url: 'master'}}" alt=""/>
+                        <div class="item__main-block">
+                            <div>
+                                <img class="news__img-logo" src="{{ block.settings.news_logo | img_url: 'master' }}" alt="">
+                            </div>
+                            <div>
+                                <a class="news__text" href="{{ block.settings.text_link }}">{{ block.settings.news_text | truncate: 55  }}</a>
+                            </div>
+                            <div class="item__date-block">
+                                <div class="news__date">
+                                    {{ "now" | date: "%Y-%m-%d" }}
+                                </div>
+                                {% render 'arrow' %}
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% style %}
+
+.news__text {
+    color: {{section.settings.news_text_color}};
+}
+
+.news__text {
+    font-family: {{section.settings.heading_font}};
+}
+
+.news__text {
+    font-size: {{section.settings.size_font}}px;
+}
+
+.news__list-item,
+.news__img {
+    border-bottom-left-radius: {{section.settings.border_bottom_left_radius | times: 0.75 | round: 0}}px;
+}
+
+.news__list-item,
+.news__img {
+    border-bottom-right-radius: {{section.settings.border_bottom_right_radius | times: 0.75 | round: 0}}px;
+}
+
+{% endstyle %}
+
+{% schema %}
+
+{
+    "name": "section-news",
+    "tag": "section",
+    "class": "news",
+    "settings": [
+        {
+            "type": "font_picker",
+            "id": "heading_font",
+            "label": "Heading font",
+            "default": "helvetica_n4"
+        }, {
+            "type": "number",
+            "id": "size_font",
+            "label": "Font size",
+            "default": 24
+        }, {
+            "type": "text",
+            "id": "service_title",
+            "default": "News",
+            "label": "Add news title"
+        }, {
+            "type": "select",
+            "id": "news_text_color",
+            "label": "Text color",
+            "options": [
+                {
+                    "value": "black",
+                    "label": "black"
+                }, {
+                    "value": "red",
+                    "label": "red"
+                }, {
+                    "value": "blue",
+                    "label": "blue"
+                }, {
+                    "value": "yellow",
+                    "label": "yellow"
+                }
+            ]
+        }, {
+            "type": "range",
+            "id": "border_bottom_left_radius",
+            "label": "Border bottom left radius",
+            "default": 64,
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px"
+        }, {
+            "type": "range",
+            "id": "border_bottom_right_radius",
+            "label": "Border bottom right radius",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "News-list",
+            "type": "list",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "news_image",
+                    "label": "Add news image"
+                }, {
+                    "type": "image_picker",
+                    "id": "news_logo",
+                    "label": "Add news logo image"
+                }, {
+                    "type": "textarea",
+                    "id": "news_text",
+                    "label": "Add news text"
+                }, {
+                    "type": "url",
+                    "id": "text_link",
+                    "label": "Add link"
+                }, {
+                    "type": "text",
+                    "id": "news_date",
+                    "label": "Add date"
+                }
+            ]
+        }
+    ]
+}
+
+{% endschema %}
