@@ -1,0 +1,131 @@
+.container {
+  width: 1024px;
+  margin: 0 auto;
+  @media screen and(max-width:1050px) {
+    width: 95%;
+  }
+}
+
+.title {
+  .title__text {
+    font-family: 'Alata';
+    font-style: normal;
+    font-weight: 400;
+    // font-size: 90px;
+    line-height: 100px;
+    color: #0b0d21;
+    margin-bottom: 100px;
+    position: relative;
+    &::before {
+      position: absolute;
+      content: '';
+      top: 135px;
+      left: 0;
+      z-index: 1;
+      width: 100px;
+      height: 6px;
+      background: #f9d023;
+    }
+  }
+}
+
+.mission__block {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 100px;
+  .mission__block-image {
+    width: 50%;
+    margin-right: 50px;
+    img {
+      width: 100%;
+    }
+  }
+  .mission__block-text {
+    width: 50%;
+
+    p {
+      font-family: 'Sofia Pro';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 26px;
+      color: #0b0d21;
+      margin: 0;
+      .bold-text {
+        font-weight: 700;
+      }
+    }
+  }
+  @media screen and (max-width: 1050px) {
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 50px;
+    .mission__block-image {
+      width: 100%;
+      margin-right: 0;
+    }
+    .mission__block-text {
+      width: 100%;
+      p {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.mission__list {
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  .mission__list-item {
+    list-style: none;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+
+    .item-img {
+      display: block;
+      width: 72px;
+      height: 72px;
+      margin: 0 auto;
+    }
+
+    .item-title {
+      width: 200px;
+      font-family: 'Sofia Pro';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 56px;
+      text-align: center;
+      color: #0b0d21;
+      margin: 0;
+    }
+
+    .item-text {
+      width: 200px;
+      font-family: 'Sofia Pro';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      text-align: center;
+      color: #0b0d21;
+    }
+  }
+  @media screen and (max-width: 1050px) {
+    flex-wrap: wrap;
+    .mission__list-item {
+      margin: 0 auto;
+      margin-bottom: 10px;
+      .item-img {
+      }
+      .item-title {
+      }
+      .item-text {
+      }
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{{ 'section-title.scss.css' | asset_url | stylesheet_tag }}
+
+<div class="container">
+    <div class="title__text">{{ section.settings.title }}</div>
+    <div class="mission__block">
+        <div class="mission__block-image">
+            <img src="{{ section.settings.img | img_url: 'master' }}" alt="image"/>
+        </div>
+        <div class="mission__block-text">
+            <p>
+                <!-- <span class="bold-text">{{ section.settings.bold }}</span> -->
+                {{ section.settings.paragraph }}
+            </p>
+        </div>
+    </div>
+
+    <ul class="mission__list">
+        {% for block in section.blocks limit: 5 %}
+            <li class="mission__list-item" {{ block.shopify_attributes }}>
+                <img class="item-img" src="{{ block.settings.slide_img | img_url: 'master' }}" alt="image"/>
+                <p class="item-title">{{ block.settings.slide_title }}</p>
+                <p class="item-text">{{ block.settings.slide_text | truncate: 40 }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% style %}
+
+.mission__block {
+    margin-bottom: {{section.settings.margin_bottom | times: 0.75 | round: 0}}px;
+}
+
+.mission__block {
+    margin-top: {{section.settings.margin_bottom | times: 0.75 | round: 0}}px;
+}
+
+.title__text {
+    font-size: {{section.settings.font_size | times: 1.75 | round: 0}}px;
+}
+
+{% endstyle %}
+
+{% schema %}
+
+{
+    "name": "section-title",
+    "tag": "section",
+    "class": "title",
+    "settings": [
+        {
+            "type": "range",
+            "id": "margin_top",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "margin top",
+            "default": 0
+        }, {
+            "type": "range",
+            "id": "margin_bottom",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "margin bottom",
+            "default": 0
+        }, {
+            "type": "range",
+            "id": "font_size",
+            "min": 10,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "font size",
+            "default": 90
+        }, {
+            "type": "text",
+            "id": "title",
+            "default": "Mission",
+            "label": "add title"
+        }, {
+            "type": "image_picker",
+            "id": "img",
+            "label": "image"
+        }
+        ,{
+            "type": "richtext",
+            "id": "paragraph",
+            "label": "Paragraph"
+          }
+    ],
+    "blocks": [
+        {
+            "name": "Slide",
+            "type": "slide",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "slide_img",
+                    "label": "Image"
+                }, {
+                    "type": "text",
+                    "id": "slide_title",
+                    "label": "slide title"
+                }, {
+                    "type": "text",
+                    "id": "slide_text",
+                    "label": "slide text"
+                }
+            ]
+        }
+    ]
+}
+
+{% endschema %}
