@@ -1,0 +1,173 @@
+{{ 'section-service.scss.css' | asset_url | stylesheet_tag }}
+
+<div class='container'>
+  <div class='service'>
+    <h2 class='service__title'>{{ section.settings.service_title }}</h2>
+    <p class='service__text'>{{ section.settings.service_text }}</p>
+    <ul class='service__list'>
+      {% for block in section.blocks limit: 3 %}
+        <li class='service__list-item' {{ block.shopify_attributes }}>
+          <h3 class='service__list-title'>
+            {{ block.settings.service_list_title }}
+          </h3>
+          <ul class='service__sublist'>
+            {% for i in (1..4) %}
+              {%- assign serviceListSubtitle = 'service_list_subtitle_' | append: i -%}
+              {%- assign serviceListSubtitleToRender = block.settings[serviceListSubtitle] -%}
+              {% if serviceListSubtitleToRender != blank %}
+                <li class='service__sublist-item'>
+                  {{ serviceListSubtitleToRender }}
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+          <div class='arrow-icon'>
+            {% render "arrow-icon" %}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+    <div>
+      <p class='service__bottom-text'>
+        {{ section.settings.service_bottom_text }}
+      </p>
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .service__text {
+      text-align: {{section.settings.text_position}};
+  }
+
+  .service__title {
+      text-align: {{section.settings.title_position}};
+  }
+
+  .service__bottom-text {
+      text-align: {{section.settings.bottom_text_position}};
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "section-service",
+  "tag": "section",
+  "class": "service",
+  "settings": [
+    {
+      "type": "text",
+      "id": "service_title",
+      "default": "Service",
+      "label": "Add service title"
+    },
+    {
+      "type": "select",
+      "id": "title_position",
+      "label": "title position",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "service_text",
+      "default": "Our clients are at the forefront of energy transition and innovation. Their mandate is complex: balance project needs with customer demands, lofty investment targets and development complexities. Layer on market volatility and regulatory risk and the scope becomes less manageable in-house. This is where Marvel comes in. We understand the task and bring deep expertise to addressing these challenges.",
+      "label": "add text"
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "text position",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "service_bottom_text",
+      "default": "Our clients are time constrained and under-resourced. Agendas shift, budgets move and priorities change. We understand. We are agile, creative and immediately responsive to your various working styles, governance requirements and evolving needs.",
+      "label": "add bottom text"
+    },
+    {
+      "type": "select",
+      "id": "bottom_text_position",
+      "label": "text position",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Service-list",
+      "type": "list",
+      "settings": [
+        {
+          "type": "text",
+          "id": "service_list_title",
+          "label": "service list title",
+          "default": "default text"
+        },
+        {
+          "type": "text",
+          "id": "service_list_subtitle_1",
+          "label": "service list subtitle",
+          "default": "Renewable Natural Gas offtakes"
+        },
+        {
+          "type": "text",
+          "id": "service_list_subtitle_2",
+          "label": "service list subtitle",
+          "default": "Renewable Natural Gas offtakes"
+        },
+        {
+          "type": "text",
+          "id": "service_list_subtitle_3",
+          "label": "service list subtitle",
+          "default": "Renewable Natural Gas offtakes"
+        },
+        {
+          "type": "text",
+          "id": "service_list_subtitle_4",
+          "label": "service list subtitle",
+          "default": "Renewable Natural Gas offtakes"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

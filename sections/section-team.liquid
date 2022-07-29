@@ -1,0 +1,199 @@
+{{ 'section-team.scss.css' | asset_url | stylesheet_tag }}
+
+<div class='container'>
+  <div class='team'>
+    <h2 class='team__title'>{{ section.settings.team_title }}</h2>
+    <div>
+      <ul class='team__card-list'>
+        {% for block in section.blocks limit: 2 %}
+          <li class='team__card-list-item'>
+            <div class='list-item__top-block'>
+              <div>
+                <div style='display: flex; align-items: center; margin-top: 50px; margin-bottom: 48px;'>
+                  <a
+                    class='card__team-link'
+                    href='{{ block.settings.team_link }}'
+                  >
+                    {{- block.settings.team_link_username -}}
+                  </a>
+                  {% render "arrow" %}
+                </div>
+                <h4 class='team__link-username'>
+                  {{ block.settings.team_link_username }}
+                </h4>
+                <p class='profession'>{{ block.settings.profession }}</p>
+              </div>
+              <div>
+                <img
+                  class='team__card-image'
+                  src='{{ block.settings.team_user_img | img_url: 'master' }}'
+                  alt=''
+                >
+              </div>
+            </div>
+            <div>
+              <p class='description'>{{ block.settings.description }}</p>
+            </div>
+            <div>
+              <h5 class='career__title card-subtitle'>Career History</h5>
+              <ul class='history__list'>
+                {% for i in (1..4) %}
+                  {%- assign historyListItem = 'history_list_item_' | append: i -%}
+                  {%- assign historyToRender = block.settings[historyListItem] -%}
+                  {% if historyToRender != blank %}
+                    <li class='history__list-item'>{{ historyToRender }}</li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+            <div>
+              <h5 class='education__title card-subtitle'>Education</h5>
+              <ul class='education__list'>
+                {% for i in (1..3) %}
+                  {%- assign educationList = 'education_list_item_'|append: i -%}
+                  {%- assign educationListToRender = block.settings[educationList] -%}
+                  {% if educationListToRender != blank %}
+                    <li class='education__list-item'>
+                      {{ educationListToRender }}
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+            <div class='card__item-social-link-block'>
+              <a
+                class='card__item-social-link'
+                href='{{ block.settings.linkedin_link }}'
+                target='_blank'
+              >
+                {%- render "linkedin-icon" -%}
+              </a>
+              <a
+                class='card__item-social-link'
+                href='{{ block.settings.mail_link }}'
+                target='_blank'
+              >
+                {%- render "mail-icon" -%}
+              </a>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% style %}
+
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "section-team",
+  "tag": "section",
+  "class": "team",
+  "settings": [
+    {
+      "type": "text",
+      "id": "team_title",
+      "default": "Team",
+      "label": "Add team title"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Service-list",
+      "type": "list",
+      "settings": [
+        {
+          "type": "select",
+          "id": "team_link",
+          "label": "Team link",
+          "options": [
+            {
+              "value": "Meet Katherine",
+              "label": "Meet Katherine"
+            },
+            {
+              "value": "Meet Sam",
+              "label": "Meet Sam"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "team_link_username",
+          "label": "Team link username",
+          "default": "default text"
+        },
+        {
+          "type": "image_picker",
+          "id": "team_user_img",
+          "label": "Add image"
+        },
+        {
+          "type": "text",
+          "id": "profession",
+          "label": "Profession",
+          "default": "profession"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "A serial entrepreneur and industry expert, Katherine has nearly 20 years of experience in running infrastructure businesses and closing complex energy transactions. As the sole founder of Marvel, in 2019, Katherine saw an opportunity to run a business her way — leading with high integrity, unmatched focus on service quality and utmost commitment to driving customers’ yields."
+        },
+        {
+          "type": "text",
+          "id": "history_list_item_1",
+          "label": "History",
+          "default": "history"
+        },
+        {
+          "type": "text",
+          "id": "history_list_item_2",
+          "label": "History",
+          "default": "history"
+        },
+        {
+          "type": "text",
+          "id": "history_list_item_3",
+          "label": "History",
+          "default": "history"
+        },
+        {
+          "type": "text",
+          "id": "history_list_item_4",
+          "label": "History",
+          "default": "history"
+        },
+        {
+          "type": "text",
+          "id": "education_list_item_1",
+          "label": "Add education"
+        },
+        {
+          "type": "text",
+          "id": "education_list_item_2",
+          "label": "Add education"
+        },
+        {
+          "type": "text",
+          "id": "education_list_item_3",
+          "label": "Add education"
+        },
+        {
+          "type": "url",
+          "id": "linkedin_link",
+          "label": "Add a link to LinkedIn"
+        },
+        {
+          "type": "url",
+          "id": "mail_link",
+          "label": "Add a link to mail"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

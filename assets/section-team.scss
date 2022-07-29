@@ -1,0 +1,184 @@
+.container {
+  width: 1110px;
+  margin: 0 auto;
+
+  @media screen and(max-width:1050px) {
+    width: 95%;
+  }
+}
+
+.team {
+  .team__title {
+    padding-top: 100px;
+    font-family: 'Alata';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 90px;
+    line-height: 100px;
+    color: #0b0d21;
+    position: relative;
+    &::before {
+      position: absolute;
+      content: '';
+      top: 235px;
+      left: 0;
+      z-index: 1;
+      width: 100px;
+      height: 6px;
+      background: #f9d023;
+    }
+  }
+
+  .team__card-list {
+    width: 100%;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    justify-content: space-between;
+
+    .team__card-list-item {
+      padding-left: 64px;
+      padding-bottom: 32px;
+      width: 540px;
+      background: #ffffff;
+      box-shadow: 0px 0px 40px rgba(0, 13, 129, 0.08);
+      border-radius: 0px 0px 0px 64px;
+      list-style: none;
+
+      .list-item__top-block {
+        display: flex;
+        justify-content: space-between;
+
+        .profession {
+          font-family: 'Sofia Pro';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 18px;
+          color: #0b0d21;
+        }
+
+        .team__card-image {
+          width: 228px;
+          height: 228px;
+        }
+
+        .card__team-link {
+          font-family: 'Sofia Pro';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 18px;
+          color: #f9d023;
+          text-decoration: none;
+          display: block;
+          margin-right: 10px;
+          transition: 0.5s;
+          &:hover {
+            margin-right: 20px;
+          }
+        }
+
+        .team__link-username {
+          font-family: 'Sofia Pro';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 40px;
+          line-height: 48px;
+          color: #0b0d21;
+          margin: 0;
+        }
+
+        .profession {
+          font-family: 'Sofia Pro';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 18px;
+          color: #0b0d21;
+        }
+      }
+
+      .description {
+        width: 412px;
+      }
+
+      .history__list-item {
+        list-style: none;
+        position: relative;
+        &::before {
+          position: absolute;
+          content: '';
+          top: 12px;
+          left: -35px;
+          z-index: 1;
+          width: 6px;
+          height: 6px;
+          background-color: #f9d023;
+        }
+      }
+      .education__list-item {
+        list-style: none;
+        position: relative;
+        &::before {
+          position: absolute;
+          content: '';
+          top: 12px;
+          left: -35px;
+          z-index: 1;
+          width: 6px;
+          height: 6px;
+          background-color: #f9d023;
+        }
+      }
+
+      .card-subtitle {
+        font-family: 'Sofia Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 32px;
+        color: #0b0d21;
+      }
+
+      .card__item-social-link-block {
+        width: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 75%;
+
+        .card__item-social-link {
+          text-decoration: none;
+          transition: 0.5s;
+          svg {
+            path {
+              //   fill: #51557c;
+            }
+          }
+          &:hover {
+            svg {
+              path {
+                fill: #51557c;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 960px) {
+      flex-wrap: wrap;
+      .team__card-list-item {
+        margin: 0 auto;
+        margin-bottom: 20px;
+      }
+    }
+
+    @media screen and (max-width: 560px) {
+      .team__card-list-item {
+        width: 100%;
+      }
+    }
+  }
+}

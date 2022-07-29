@@ -1,0 +1,54 @@
+{{ 'test.css' | asset_url | stylesheet_tag }}
+
+<button class='test-btn'>
+  {% render "icon-3d-model" width: "20px" %}button
+</button>
+
+{% style %}
+  .test-btn{
+      background:{{ section.settings.color_btn }}
+  }
+  .test-btn{
+      border:{{section.settings.border_one}}px solid {{section.settings.border_color}}
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "test",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "color_btn",
+      "default": "rgb(71, 252, 255)",
+      "label": "color"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "default": "#000",
+      "label": "border color"
+    },
+    {
+      "type": "radio",
+      "id": "border_one",
+      "label": "border px",
+      "options": [
+        {
+          "value": "1",
+          "label": "1px"
+        },
+        {
+          "value": "2",
+          "label": "2px"
+        },
+        {
+          "value": "3",
+          "label": "3px"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
