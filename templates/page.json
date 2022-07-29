@@ -7,9 +7,6 @@
     "sectionsTest": {
       "type": "video"
     },
-    "test": {
-      "type": "test"
-    },
     "section-title": {
       "type": "section-title"
     },
@@ -26,7 +23,6 @@
   "order": [
     "main",
     "sectionsTest",
-    "test",
     "section-title",
     "section-service",
     "section-team",

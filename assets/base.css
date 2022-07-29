@@ -2893,3 +2893,14 @@ details-disclosure>details {
 .font-body-bold {
     font-weight: var(--font-body-weight-bold);
 }
+
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
