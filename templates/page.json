@@ -13,16 +13,23 @@
     "section-title": {
       "type": "section-title"
     },
-    "section-service":{
-        "type":"section-service"
+    "section-service": {
+      "type": "section-service"
     },
-    "section-team":{
-        "type":"section-team"
+    "section-team": {
+      "type": "section-team"
     },
-    "section-news":{
-        "type":"section-news"
+    "section-news": {
+      "type": "section-news"
     }
-
   },
-  "order": ["main", "sectionsTest", "test", "section-title","section-service","section-team","section-news"]
+  "order": [
+    "main",
+    "sectionsTest",
+    "test",
+    "section-title",
+    "section-service",
+    "section-team",
+    "section-news"
+  ]
 }

@@ -1,28 +1,27 @@
 <div>
-    {{ section.settings.heading }}
+  {{ section.settings.heading }}
 </div>
 <div>
-    <img src="{{ section.settings.img | img_url: 'master' }}" alt=""/>
+  <img src='{{ section.settings.img | img_url: 'master' }}' alt=''>
 </div>
 
 {% schema %}
-
 {
-    "name": "test-section",
-    "tag": "section",
-    "class": "section",
-    "settings": [
-        {
-            "type": "text",
-            "id": "heading",
-            "default": "test title",
-            "label": "page title"
-        }, {
-            "type": "image_picker",
-            "id": "img",
-            "label": "image"
-        }
-    ]
+  "name": "test-section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "test title",
+      "label": "page title"
+    },
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "image"
+    }
+  ]
 }
-
 {% endschema %}

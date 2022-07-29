@@ -9,7 +9,6 @@
 
 .team {
   .team__title {
-    
     padding-top: 100px;
     font-family: 'Alata';
     font-style: normal;
@@ -75,7 +74,7 @@
           display: block;
           margin-right: 10px;
           transition: 0.5s;
-          &:hover{
+          &:hover {
             margin-right: 20px;
           }
         }
@@ -144,27 +143,42 @@
 
       .card__item-social-link-block {
         width: 80px;
-        display:flex;
+        display: flex;
         align-items: center;
         justify-content: space-between;
         margin-left: 75%;
 
         .card__item-social-link {
           text-decoration: none;
+          transition: 0.5s;
+          svg {
+            path {
+              //   fill: #51557c;
+            }
+          }
+          &:hover {
+            svg {
+              path {
+                fill: #51557c;
+              }
+            }
+          }
         }
       }
     }
-    @media screen and (max-width:960px) {
-        flex-wrap: wrap;
-        .team__card-list-item {
-            margin: 0 auto;
-            margin-bottom: 20px;
-        }
+
+    @media screen and (max-width: 960px) {
+      flex-wrap: wrap;
+      .team__card-list-item {
+        margin: 0 auto;
+        margin-bottom: 20px;
+      }
     }
-    @media screen and (max-width:560px) {
-        .team__card-list-item {
-            width: 100%;
-        }
+
+    @media screen and (max-width: 560px) {
+      .team__card-list-item {
+        width: 100%;
+      }
     }
   }
 }
